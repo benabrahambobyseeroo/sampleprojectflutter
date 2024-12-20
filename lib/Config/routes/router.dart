@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:sampleproject/Config/routes/router.gr.dart';
-import 'package:sampleproject/Presentation%20layer/Pages/Dashboard.dart';
-import 'package:sampleproject/Presentation%20layer/Pages/Login.dart';
-import 'package:sampleproject/Presentation%20layer/Pages/mainpage.dart';
+import 'package:sampleproject/Presentation%20layer/Pages/dashboard_page.dart';
+import 'package:sampleproject/Presentation%20layer/Pages/login_page.dart';
+import 'package:sampleproject/Presentation%20layer/Pages/main_page.dart';
 
 
 // Define your routes using the new AutoRouter syntax
@@ -12,7 +12,7 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
     AutoRoute(page: LoginRoute.page, initial: true),
     AutoRoute(page: HomeRoute.page),
-    AutoRoute(page: Trypage.page),
+    AutoRoute(page: TryRoute.page),
   ];
 }
 

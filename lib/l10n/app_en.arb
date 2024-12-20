@@ -1,0 +1,19 @@
+{
+  "@@locale": "en",
+  "login": "Login",
+  "username": "Username",
+  "password": "Password",
+  "forgot_password": "Forgot Password",
+  "or_login_with": "or login with",
+  "signup": "Do not have an account? Sign up",
+  "hello": "Hi {name},",
+  "whatWouldYouLikeToDo": "What would you like to do today?",
+  "history": "History",
+  "trackDelivery": "Track Delivery",
+  "delivered": "Delivered",
+  "send": "Send",
+  "fetch": "Fetch",
+  "sell": "Sell",
+  "menu": "Menu",
+  "choose_user_category": "Please choose a \n user category"
+}

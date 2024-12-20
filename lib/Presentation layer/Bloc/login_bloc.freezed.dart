@@ -18,22 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginEvent {
   String get number => throw _privateConstructorUsedError;
   String get pass => throw _privateConstructorUsedError;
-  BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String number, String pass, BuildContext context)
-        started,
+    required TResult Function(String number, String pass) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String number, String pass, BuildContext context)?
-        started,
+    TResult? Function(String number, String pass)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String number, String pass, BuildContext context)? started,
+    TResult Function(String number, String pass)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +64,7 @@ abstract class $LoginEventCopyWith<$Res> {
           LoginEvent value, $Res Function(LoginEvent) then) =
       _$LoginEventCopyWithImpl<$Res, LoginEvent>;
   @useResult
-  $Res call({String number, String pass, BuildContext context});
+  $Res call({String number, String pass});
 }
 
 /// @nodoc
@@ -87,7 +84,6 @@ class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
   $Res call({
     Object? number = null,
     Object? pass = null,
-    Object? context = null,
   }) {
     return _then(_value.copyWith(
       number: null == number
@@ -98,10 +94,6 @@ class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
           ? _value.pass
           : pass // ignore: cast_nullable_to_non_nullable
               as String,
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
     ) as $Val);
   }
 }
@@ -114,7 +106,7 @@ abstract class _$$StartedImplCopyWith<$Res>
       __$$StartedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String number, String pass, BuildContext context});
+  $Res call({String number, String pass});
 }
 
 /// @nodoc
@@ -132,7 +124,6 @@ class __$$StartedImplCopyWithImpl<$Res>
   $Res call({
     Object? number = null,
     Object? pass = null,
-    Object? context = null,
   }) {
     return _then(_$StartedImpl(
       number: null == number
@@ -143,10 +134,6 @@ class __$$StartedImplCopyWithImpl<$Res>
           ? _value.pass
           : pass // ignore: cast_nullable_to_non_nullable
               as String,
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
     ));
   }
 }
@@ -154,19 +141,16 @@ class __$$StartedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl(
-      {required this.number, required this.pass, required this.context});
+  const _$StartedImpl({required this.number, required this.pass});
 
   @override
   final String number;
   @override
   final String pass;
-  @override
-  final BuildContext context;
 
   @override
   String toString() {
-    return 'LoginEvent.started(number: $number, pass: $pass, context: $context)';
+    return 'LoginEvent.started(number: $number, pass: $pass)';
   }
 
   @override
@@ -175,12 +159,11 @@ class _$StartedImpl implements _Started {
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
             (identical(other.number, number) || other.number == number) &&
-            (identical(other.pass, pass) || other.pass == pass) &&
-            (identical(other.context, context) || other.context == context));
+            (identical(other.pass, pass) || other.pass == pass));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, pass, context);
+  int get hashCode => Object.hash(runtimeType, number, pass);
 
   /// Create a copy of LoginEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -193,29 +176,27 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String number, String pass, BuildContext context)
-        started,
+    required TResult Function(String number, String pass) started,
   }) {
-    return started(number, pass, context);
+    return started(number, pass);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String number, String pass, BuildContext context)?
-        started,
+    TResult? Function(String number, String pass)? started,
   }) {
-    return started?.call(number, pass, context);
+    return started?.call(number, pass);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String number, String pass, BuildContext context)? started,
+    TResult Function(String number, String pass)? started,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(number, pass, context);
+      return started(number, pass);
     }
     return orElse();
   }
@@ -252,15 +233,12 @@ class _$StartedImpl implements _Started {
 abstract class _Started implements LoginEvent {
   const factory _Started(
       {required final String number,
-      required final String pass,
-      required final BuildContext context}) = _$StartedImpl;
+      required final String pass}) = _$StartedImpl;
 
   @override
   String get number;
   @override
   String get pass;
-  @override
-  BuildContext get context;
 
   /// Create a copy of LoginEvent
   /// with the given fields replaced by the non-null parameter values.

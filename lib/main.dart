@@ -1,48 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
-import 'package:sampleproject/Config/di/injectable.dart';
 import 'package:sampleproject/Config/routes/router.dart';
-import 'package:sampleproject/DomainLayer/usecases/get_users.dart';
 import 'package:sampleproject/Presentation%20layer/Bloc/login_bloc.dart';
-import 'Config/routes/router.gr.dart';
+import 'package:sampleproject/config/di/injectable.dart';
+import 'package:sampleproject/l10n/Language.dart';
+import 'package:sampleproject/l10n/app_localizations.dart';
 
 
 void main() {
-  // Register the app router with GetIt (Dependency Injection container)
-  // final appRouter = AppRouter();
-  // GetIt.I.registerSingleton<AppRouter>(appRouter);
-  // GetIt.I.registerFactory<LoginBloc>(() => LoginBloc(GetIt.I<SignInUseCase>()));
   configureDependencies();
-  runApp(BlocProvider(
-    create: (context) => getIt.get<LoginBloc>(),
-    child: MyApp(),
-  ));
+  runApp(
+    BlocProvider(
+      create: (context) => getIt.get<LoginBloc>(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  // final AppRouter appRouter;
-
-
-  MyApp(// {
-
-      // required this.appRouter
-
-      // }
-      );
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     final appRouter = AppRouter();
+    // Default language is English
     return MaterialApp.router(
       title: 'Flutter Sample UI',
+      locale: _locale
+      ,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.yellow,
+        hintColor: Colors.white,
       ),
       routerDelegate: appRouter.delegate(),
       routeInformationParser: appRouter.defaultRouteParser(),
+
     );
   }
+
 }
+Locale _locale = const Locale('en');
+
 
 

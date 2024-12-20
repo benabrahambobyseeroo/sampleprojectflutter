@@ -1,0 +1,20 @@
+{
+  "@@locale": "es",
+  "login": "Iniciar sesión",
+  "username": "Nombre de usuario",
+  "password": "Contraseña",
+  "forgot_password": "¿Olvidaste tu contraseña?",
+  "or_login_with": "o iniciar sesión con",
+  "signup": "¿No tienes una cuenta? Regístrate",
+  "hello": "Hola {name},",
+  "whatWouldYouLikeToDo": "¿Qué te gustaría hacer hoy?",
+  "history": "Historia",
+  "trackDelivery": "Rastrear entrega",
+  "delivered": "Entregado",
+  "send": "Enviar",
+  "fetch": "Obtener",
+  "sell": "Vender",
+  "menu": "Menú",
+  "choose_user_category": "Por favor elija una \n categoría de usuario"
+}
+
