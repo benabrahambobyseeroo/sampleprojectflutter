@@ -43,6 +43,7 @@ class HomePage extends StatelessWidget {
                   },
                   iconPath: 'assets/images/ic_choose_company.svg',
                   label: 'Customer',
+                  context: context
                 ),
                 const SizedBox(height: 20),
                 _buildUserCategoryButton(
@@ -51,6 +52,7 @@ class HomePage extends StatelessWidget {
                   },
                   iconPath: 'assets/images/ic_choose_customer.svg',
                   label: 'Company / Restaurant',
+                  context: context
                 ),
               ],
             ),
@@ -64,6 +66,7 @@ class HomePage extends StatelessWidget {
     required VoidCallback onPressed,
     required String iconPath,
     required String label,
+    required BuildContext context
   }) {
     return OutlinedButton(
       onPressed: onPressed,
@@ -72,8 +75,8 @@ class HomePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
-        side: BorderSide(color: ThemeData().primaryColor, width: 2),
-        backgroundColor: ThemeData().hintColor,
+        side: BorderSide(color: Theme.of(context).primaryColor, width: 2),
+        backgroundColor: Theme.of(context).hintColor,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,

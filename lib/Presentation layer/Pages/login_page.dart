@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
         );
       },
       child: Scaffold(
-        backgroundColor: ThemeData().primaryColor,
+        backgroundColor: Theme.of(context).primaryColor,
         body: Column(
           children: [
             Expanded(
@@ -161,7 +161,7 @@ class LoginPage extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(
           fixedSize: const Size(200, 50),
-          backgroundColor: ThemeData().hintColor,
+          backgroundColor: Theme.of(context).hintColor,
           foregroundColor: Colors.black,
         ),
         child: const Text('Login'),

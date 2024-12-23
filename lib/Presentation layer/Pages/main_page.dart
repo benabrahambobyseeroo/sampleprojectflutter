@@ -7,14 +7,14 @@ class TryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ThemeData().hintColor,
+      backgroundColor: Theme.of(context).hintColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Top Section
           Container(
             decoration: BoxDecoration(
-              color: ThemeData().primaryColor,
+              color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(30),
               ),
@@ -106,7 +106,7 @@ class TryPage extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    leading: Icon(Icons.location_on, color: ThemeData().primaryColor,),
+                    leading: Icon(Icons.location_on, color: Theme.of(context).primaryColor,),
                     title: const Text("Bin Rasheed Building"),
                     subtitle: const Text("Dubai Investments Park"),
                     trailing: StatusBadge(label: context.loc.delivered,),
@@ -157,7 +157,7 @@ class ActionButton extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: ThemeData().primaryColor, width: 2),
+            border: Border.all(color: Theme.of(context).primaryColor, width: 2),
           ),
           child: Image.asset(
             iconPath,
@@ -185,7 +185,7 @@ class StatusBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: ThemeData().primaryColor,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
@@ -207,7 +207,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: ThemeData().hintColor,
+        color: Theme.of(context).hintColor,
         border: Border(
           top: BorderSide(color: Colors.grey.shade300),
         ),
