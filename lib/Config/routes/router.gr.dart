@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:flutter/material.dart' as _i5;
 import 'package:sampleproject/Presentation%20layer/Pages/dashboard_page.dart'
     as _i1;
 import 'package:sampleproject/Presentation%20layer/Pages/login_page.dart'
@@ -55,10 +56,17 @@ class LoginRoute extends _i4.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.TryPage]
-class TryRoute extends _i4.PageRouteInfo<void> {
-  const TryRoute({List<_i4.PageRouteInfo>? children})
-      : super(
+class TryRoute extends _i4.PageRouteInfo<TryRouteArgs> {
+  TryRoute({
+    _i5.Key? key,
+    required String response,
+    List<_i4.PageRouteInfo>? children,
+  }) : super(
           TryRoute.name,
+          args: TryRouteArgs(
+            key: key,
+            response: response,
+          ),
           initialChildren: children,
         );
 
@@ -67,7 +75,27 @@ class TryRoute extends _i4.PageRouteInfo<void> {
   static _i4.PageInfo page = _i4.PageInfo(
     name,
     builder: (data) {
-      return _i3.TryPage();
+      final args = data.argsAs<TryRouteArgs>();
+      return _i3.TryPage(
+        key: args.key,
+        response: args.response,
+      );
     },
   );
+}
+
+class TryRouteArgs {
+  const TryRouteArgs({
+    this.key,
+    required this.response,
+  });
+
+  final _i5.Key? key;
+
+  final String response;
+
+  @override
+  String toString() {
+    return 'TryRouteArgs{key: $key, response: $response}';
+  }
 }

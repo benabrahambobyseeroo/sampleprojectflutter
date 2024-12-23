@@ -1,9 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:sampleproject/Config/routes/router.gr.dart';
 import 'package:sampleproject/Presentation%20layer/Bloc/login_bloc.dart';
+import 'package:sampleproject/Presentation%20layer/Widgets/makanek%20logo.dart';
+import 'package:sampleproject/Presentation%20layer/provider/LocaleProvider.dart';
+
 import 'package:sampleproject/l10n/lang_extensions.dart';
+import 'package:sampleproject/main.dart';
+
 
 @RoutePage()
 class LoginPage extends StatelessWidget {
@@ -17,9 +23,10 @@ class LoginPage extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         state.maybeWhen(
-          success: () {
-            context.router.push( TryRoute());
+          loading: (response) {
+            context.router.push( TryRoute(response: response),);
           },
+
           orElse: () {},
         );
       },
@@ -29,7 +36,7 @@ class LoginPage extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: _buildLogoSection(),
+              child: curvedColumn(),
             ),
             Expanded(
               flex: 2,
@@ -38,7 +45,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 50),
-                    _buildLoginHeader(),
+                    _buildLoginHeader(context),
                     const SizedBox(height: 25),
                     _buildTextField(
                       controller: usernameController,
@@ -68,7 +75,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            _buildSocialButtons(),
+            _buildSocialButtons(context),
             const SizedBox(height: 20),
             _buildSignupOption(context),
           ],
@@ -78,6 +85,7 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _buildLogoSection() {
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -92,23 +100,23 @@ class LoginPage extends StatelessWidget {
 
 
             },
-             child: Text(
+            child: Text(
               "MAKANEK",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                       ),
-           ),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildLoginHeader() {
+  Widget _buildLoginHeader(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Login",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        Text(
+          context.loc.login,
+          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 5),
         Image.asset(
@@ -169,16 +177,19 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialButtons() {
+  Widget _buildSocialButtons(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildSocialButton("assets/images/facebook.png", onPressed: () {
+          Provider.of<LocaleProvider>(context,listen: false).changeLocale(Locale("es"));
           // Handle Facebook login action
         }),
         const SizedBox(width: 10),
         _buildSocialButton("assets/images/google.png", onPressed: () {
           // Handle Google login action
+
+          context.read<LocaleProvider>().changeLocale(Locale("en"));
         }),
       ],
     );

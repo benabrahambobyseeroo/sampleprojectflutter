@@ -1,9 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sampleproject/Presentation%20layer/Bloc/login_bloc.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
 
 @RoutePage()
 class TryPage extends StatelessWidget {
+   final String response;
+
+  const TryPage({super.key,required this.response});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +51,14 @@ class TryPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Hi John,",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              Text(
+              "access token"+response,
+              maxLines: 1,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
                 const SizedBox(height: 8),
                 Text(
                   context.loc.whatWouldYouLikeToDo,
