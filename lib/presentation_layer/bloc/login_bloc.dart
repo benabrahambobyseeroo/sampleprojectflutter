@@ -6,8 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sampleproject/Config/routes/router.gr.dart';
-import 'package:sampleproject/DomainLayer/usecases/get_users.dart';
-import 'package:sampleproject/Presentation%20layer/Pages/main_page.dart';
+import 'package:sampleproject/domain_layer/usecases/get_users.dart';
+import 'package:sampleproject/presentation_layer/pages/main_page.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

@@ -10,11 +10,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/material.dart' as _i5;
-import 'package:sampleproject/Presentation%20layer/Pages/dashboard_page.dart'
+import 'package:sampleproject/presentation_layer/pages/dashboard_page.dart'
     as _i1;
-import 'package:sampleproject/Presentation%20layer/Pages/login_page.dart'
-    as _i2;
-import 'package:sampleproject/Presentation%20layer/Pages/main_page.dart' as _i3;
+import 'package:sampleproject/presentation_layer/pages/login_page.dart' as _i2;
+import 'package:sampleproject/presentation_layer/pages/main_page.dart' as _i3;
 
 /// generated route for
 /// [_i1.HomePage]

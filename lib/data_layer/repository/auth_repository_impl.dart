@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:sampleproject/DomainLayer/repository/user_repository.dart';
+import 'package:sampleproject/domain_layer/repository/user_repository.dart';
 // import 'auth_repository.dart';
 
 @Injectable(as: AuthRepository)
