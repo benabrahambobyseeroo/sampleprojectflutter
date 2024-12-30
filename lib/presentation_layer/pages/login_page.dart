@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:sampleproject/Config/routes/router.gr.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
 import 'package:sampleproject/main.dart';
-import 'package:sampleproject/presentation_layer/Bloc/login_bloc.dart';
+import 'package:sampleproject/presentation_layer/bloc/login_bloc.dart';
 import 'package:sampleproject/presentation_layer/provider/LocaleProvider.dart';
-import 'package:sampleproject/presentation_layer/widgets/makanek%20logo.dart';
+import 'package:sampleproject/presentation_layer/widgets/makanek_logo.dart';
 
 
 @RoutePage()

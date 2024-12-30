@@ -38,22 +38,20 @@ class HomePage extends StatelessWidget {
             Column(
               children: [
                 _buildUserCategoryButton(
-                  onPressed: () {
-                    // Handle customer selection
-                  },
-                  iconPath: 'assets/images/ic_choose_company.svg',
-                  label: 'Customer',
-                  context: context
-                ),
+                    onPressed: () {
+                      // Handle customer selection
+                    },
+                    iconPath: 'assets/images/ic_choose_company.svg',
+                    label: 'Customer',
+                    context: context),
                 const SizedBox(height: 20),
                 _buildUserCategoryButton(
-                  onPressed: () {
-                    // Handle company/restaurant selection
-                  },
-                  iconPath: 'assets/images/ic_choose_customer.svg',
-                  label: 'Company / Restaurant',
-                  context: context
-                ),
+                    onPressed: () {
+                      // Handle company/restaurant selection
+                    },
+                    iconPath: 'assets/images/ic_choose_customer.svg',
+                    label: 'Company / Restaurant',
+                    context: context),
               ],
             ),
           ],
@@ -62,12 +60,11 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildUserCategoryButton({
-    required VoidCallback onPressed,
-    required String iconPath,
-    required String label,
-    required BuildContext context
-  }) {
+  Widget _buildUserCategoryButton(
+      {required VoidCallback onPressed,
+      required String iconPath,
+      required String label,
+      required BuildContext context}) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
