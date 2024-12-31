@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
 
 @RoutePage()
-class TryPage extends StatelessWidget {
+class TryScreen extends StatelessWidget {
    final String response;
 
-  const TryPage({super.key,required this.response});
+  const TryScreen(
+      {super.key,required this.response}
+      );
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -54,7 +54,7 @@ class LoginRoute extends _i4.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.TryPage]
+/// [_i3.TryScreen]
 class TryRoute extends _i4.PageRouteInfo<TryRouteArgs> {
   TryRoute({
     _i5.Key? key,
@@ -75,7 +75,7 @@ class TryRoute extends _i4.PageRouteInfo<TryRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<TryRouteArgs>();
-      return _i3.TryPage(
+      return _i3.TryScreen(
         key: args.key,
         response: args.response,
       );

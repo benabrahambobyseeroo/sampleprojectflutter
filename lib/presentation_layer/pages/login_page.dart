@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:sampleproject/Config/routes/router.gr.dart';
+import 'package:sampleproject/config/routes/router.gr.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
 import 'package:sampleproject/main.dart';
 import 'package:sampleproject/presentation_layer/bloc/login_bloc.dart';
@@ -23,7 +25,11 @@ class LoginPage extends StatelessWidget {
       listener: (context, state) {
         state.maybeWhen(
           loading: (response) {
-            context.router.push( TryRoute(response: response),);
+            log("response"+response);
+            Future.delayed(const Duration(seconds: 2),(){
+              context.router.push(TryRoute(response: response,));
+            });
+
           },
 
           orElse: () {},
@@ -41,35 +47,37 @@ class LoginPage extends StatelessWidget {
               flex: 2,
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 50),
-                    _buildLoginHeader(context),
-                    const SizedBox(height: 25),
-                    _buildTextField(
-                      controller: usernameController,
-                      label: context.loc.username,
-                    ),
-                    const SizedBox(height: 25),
-                    _buildTextField(
-                      controller: passwordController,
-                      label: context.loc.password,
-                      obscureText: true,
-                    ),
-                    const SizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(context.loc.forgot_password, textAlign: TextAlign.end),
-                    ),
-                    const SizedBox(height: 25),
-                    _buildLoginButton(
-                      context: context,
-                      usernameController: usernameController,
-                      passwordController: passwordController,
-                    ),
-                    const SizedBox(height: 15),
-                    Text(context.loc.or_login_with),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 50),
+                      _buildLoginHeader(context),
+                      const SizedBox(height: 25),
+                      _buildTextField(
+                        controller: usernameController,
+                        label: context.loc.username,
+                      ),
+                      const SizedBox(height: 25),
+                      _buildTextField(
+                        controller: passwordController,
+                        label: context.loc.password,
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 10),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(context.loc.forgot_password, textAlign: TextAlign.end),
+                      ),
+                      const SizedBox(height: 25),
+                      _buildLoginButton(
+                        context: context,
+                        usernameController: usernameController,
+                        passwordController: passwordController,
+                      ),
+                      const SizedBox(height: 15),
+                      Text(context.loc.or_login_with),
+                    ],
+                  ),
                 ),
               ),
             ),
