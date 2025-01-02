@@ -1,4 +1,4 @@
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -6,29 +6,33 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:sampleproject/config/routes/router.gr.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
-import 'package:sampleproject/main.dart';
 import 'package:sampleproject/presentation_layer/bloc/login_bloc.dart';
-import 'package:sampleproject/presentation_layer/provider/LocaleProvider.dart';
+import 'package:sampleproject/presentation_layer/provider/locale_bloc.dart';
 import 'package:sampleproject/presentation_layer/widgets/makanek_logo.dart';
 
 
 @RoutePage()
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> { final TextEditingController usernameController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
-    final TextEditingController usernameController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+
 
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         state.maybeWhen(
           loading: (response) {
-            log("response"+response);
-            Future.delayed(const Duration(seconds: 2),(){
+            // log("response"+response);
+            // Future.delayed(const Duration(seconds: 2),(){
               context.router.push(TryRoute(response: response,));
-            });
+            // });
 
           },
 
@@ -49,9 +53,11 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.all(25.0),
                 child: SingleChildScrollView(
                   child: Column(
+
                     children: [
                       const SizedBox(height: 50),
-                      _buildLoginHeader(context),
+                      Align(alignment: Alignment.centerLeft,
+                          child: _buildLoginHeader(context)),
                       const SizedBox(height: 25),
                       _buildTextField(
                         controller: usernameController,
@@ -107,7 +113,7 @@ class LoginPage extends StatelessWidget {
 
 
             },
-            child: Text(
+            child: const Text(
               "MAKANEK",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
@@ -189,14 +195,19 @@ class LoginPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildSocialButton("assets/images/facebook.png", onPressed: () {
-          Provider.of<LocaleProvider>(context,listen: false).changeLocale(Locale("es"));
+          // Provider.of<LocaleProvider>(context,listen: false).changeLocale(const Locale("es"));
+          context.read<LocaleBloc>().add(
+            const LocaleEvent.changeLocale(Locale('es')),  // Change to French
+          );
           // Handle Facebook login action
         }),
         const SizedBox(width: 10),
         _buildSocialButton("assets/images/google.png", onPressed: () {
           // Handle Google login action
-
-          context.read<LocaleProvider>().changeLocale(Locale("en"));
+          context.read<LocaleBloc>().add(
+            const LocaleEvent.changeLocale(Locale('en')),  // Change to French
+          );
+          // context.read<LocaleProvider>().changeLocale(const Locale("en"));
         }),
       ],
     );
@@ -225,5 +236,11 @@ class LoginPage extends StatelessWidget {
       borderRadius: BorderRadius.circular(30),
       child: Text(context.loc.signup),
     );
+  }
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 }

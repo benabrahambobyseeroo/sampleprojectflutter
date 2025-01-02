@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
+import 'package:sampleproject/presentation_layer/widgets/makanek_logo.dart';
 
 @RoutePage()
 class TryScreen extends StatelessWidget {
@@ -13,80 +13,63 @@ class TryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).hintColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Top Section
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(30),
-              ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        'assets/images/logo.png', // Replace with your logo asset
-                        height: 30,
-                      ),
-                      const SizedBox(height: 20),
-                      const Text("MAKANK"),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+         Expanded(flex:1,child: curvedColumn()),
           const SizedBox(height: 20),
 
           // Circular Action Buttons
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              Text(
-              "access token"+response,
-              maxLines: 1,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-                const SizedBox(height: 8),
+            child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30), // Curve bottom left
+                      topRight: Radius.circular(30), // Curve bottom right
+                    )
+                ) ,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                 Text(
-                  context.loc.whatWouldYouLikeToDo,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
+                "access token $response",
+                maxLines: 1,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+                  const SizedBox(height: 8),
+                  Text(
+                    context.loc.whatWouldYouLikeToDo,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ActionButton(
-                      iconPath: 'assets/images/google.png', // Replace with send icon
-                      label:context.loc.send,
-                    ),
-                    ActionButton(
-                      iconPath: 'assets/images/facebook.png', // Replace with fetch icon
-                      label: context.loc.fetch,
-                    ),
-                    ActionButton(
-                      iconPath: 'assets/images/google.png', // Replace with sell icon
-                      label: context.loc.sell,
-                    ),
-                  ],
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ActionButton(
+                        iconPath: 'assets/images/google.png', // Replace with send icon
+                        label:context.loc.send,
+                      ),
+                      ActionButton(
+                        iconPath: 'assets/images/facebook.png', // Replace with fetch icon
+                        label: context.loc.fetch,
+                      ),
+                      ActionButton(
+                        iconPath: 'assets/images/google.png', // Replace with sell icon
+                        label: context.loc.sell,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 30),
@@ -154,7 +137,7 @@ class ActionButton extends StatelessWidget {
   final String iconPath;
   final String label;
 
-  const ActionButton({required this.iconPath, required this.label, Key? key}) : super(key: key);
+  const ActionButton({required this.iconPath, required this.label, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +168,7 @@ class ActionButton extends StatelessWidget {
 class StatusBadge extends StatelessWidget {
   final String label;
 
-  const StatusBadge({required this.label, Key? key}) : super(key: key);
+  const StatusBadge({required this.label, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +190,7 @@ class StatusBadge extends StatelessWidget {
 }
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({Key? key}) : super(key: key);
+  const CustomBottomNavigationBar({super.key});
 
   @override
   Widget build(BuildContext context) {

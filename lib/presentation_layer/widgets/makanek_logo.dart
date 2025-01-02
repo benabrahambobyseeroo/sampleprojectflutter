@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 Widget curvedColumn() {
   return Container(
     width: double.infinity, // Ensure full width
 
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.yellow, // Background color
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(30), // Curve bottom left
@@ -17,11 +17,11 @@ Widget curvedColumn() {
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      SizedBox(height: 50,),
-      Expanded(child: Image.asset("assets/images/logo.png"),flex: 1,)
+      const SizedBox(height: 50,),
+      Expanded(flex: 1,child: Image.asset("assets/images/logo.png"))
       ,
-      SizedBox(height: 20),
-      Expanded(child:Text("MAKANK",style: TextStyle(fontSize: 25),),flex: 1)
+      const SizedBox(height: 20),
+      const Expanded(flex: 1,child:Text("MAKANK",style: TextStyle(fontSize: 25),))
     ],
   )
 
