@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
             // User Category Buttons
             Column(
               children: [
-                _buildUserCategoryButton(
+                UserCategoryButton(
                     onPressed: () {
                       // Handle customer selection
                     },
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                     label: 'Customer',
                     context: context),
                 const SizedBox(height: 20),
-                _buildUserCategoryButton(
+                UserCategoryButton(
                     onPressed: () {
                       // Handle company/restaurant selection
                     },
@@ -60,11 +60,23 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildUserCategoryButton(
-      {required VoidCallback onPressed,
-      required String iconPath,
-      required String label,
-      required BuildContext context}) {
+
+}
+
+class UserCategoryButton extends StatelessWidget {
+  const UserCategoryButton({
+    super.key,
+    required this. onPressed,
+    required this. iconPath,
+    required this.label ,
+    required this. context
+  });
+  final  VoidCallback onPressed;
+  final  String iconPath;
+  final  String label;
+  final  BuildContext context ;
+  @override
+  Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(

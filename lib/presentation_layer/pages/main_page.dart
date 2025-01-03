@@ -18,7 +18,7 @@ class TryScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Top Section
-          Expanded(flex: 1, child: CurvedColumn()),
+          const Expanded(flex: 1, child: CurvedColumn()),
           const SizedBox(height: 20),
 
           // Circular Action Buttons

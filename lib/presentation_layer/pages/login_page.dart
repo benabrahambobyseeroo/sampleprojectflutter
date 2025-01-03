@@ -42,7 +42,7 @@ final TextEditingController passwordController = TextEditingController();
         backgroundColor: Theme.of(context).primaryColor,
         body: Column(
           children: [
-            Expanded(
+            const Expanded(
               flex: 1,
               child: CurvedColumn(),
             ),
@@ -54,16 +54,18 @@ final TextEditingController passwordController = TextEditingController();
                   child: Column(
 
                     children: [
+
+
                       const SizedBox(height: 50),
                       Align(alignment: Alignment.centerLeft,
-                          child: _buildLoginHeader(context)),
+                          child: LoginHeader()),
                       const SizedBox(height: 25),
-                      _buildTextField(
+                      BuildTextField(
                         controller: usernameController,
                         label: context.loc.username,
                       ),
                       const SizedBox(height: 25),
-                      _buildTextField(
+                      BuildTextField(
                         controller: passwordController,
                         label: context.loc.password,
                         obscureText: true,
@@ -74,7 +76,7 @@ final TextEditingController passwordController = TextEditingController();
                         child: Text(context.loc.forgot_password, textAlign: TextAlign.end),
                       ),
                       const SizedBox(height: 25),
-                      _buildLoginButton(
+                      LoginButton(
                         context: context,
                         usernameController: usernameController,
                         passwordController: passwordController,
@@ -87,9 +89,45 @@ final TextEditingController passwordController = TextEditingController();
               ),
             ),
             const SizedBox(height: 20),
-            _buildSocialButtons(context),
+            SocialButtons(),
             const SizedBox(height: 20),
-            _buildSignupOption(context),
+        InkWell(
+          onTap: () {
+            context.router.push(const HomeRoute());
+          },
+          borderRadius: BorderRadius.circular(30),
+          child: Text(context.loc.signup),
+        ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FilledButton(
+                    style: FilledButton.styleFrom(
+                      fixedSize: const Size(200, 50),
+                      backgroundColor: Theme.of(context).hintColor,
+                      foregroundColor: Colors.black,
+                    ),
+                    onPressed: (){
+                      // Handle Google login action
+                      context.read<LocaleBloc>().add(
+                        const LocaleEvent.changeLocale(Locale('es')),  // Change to French
+                      );
+                      // context.read<LocaleProvider>().changeLocale(const Locale("en"));
+                    }, child: Text("Es")),
+                FilledButton(style: FilledButton.styleFrom(
+                  fixedSize: const Size(200, 50),
+                  backgroundColor: Theme.of(context).hintColor,
+                  foregroundColor: Colors.black,
+                ),onPressed: (){
+                  // Handle Google login action
+                  context.read<LocaleBloc>().add(
+                    const LocaleEvent.changeLocale(Locale('en')),  // Change to French
+                  );
+                  // context.read<LocaleProvider>().changeLocale(const Locale("en"));
+                }, child: Text("En"))
+
+              ],
+            ),
           ],
         ),
       ),
@@ -98,7 +136,58 @@ final TextEditingController passwordController = TextEditingController();
 
 
 
-  Widget _buildLoginHeader(BuildContext context) {
+
+
+  // Widget _buildTextField({
+  //   required TextEditingController controller,
+  //   required String label,
+  //   bool obscureText = false,
+  // }) {
+  //   return BuildTextField();
+  // }
+
+
+
+
+
+
+
+
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+}
+
+class BuildTextField extends StatelessWidget {
+  const BuildTextField({
+    super.key, required this. controller,
+    required this. label,
+    bool obscureText = false,
+  });
+  final TextEditingController controller;
+  final  String label;
+  final bool obscureText = false;
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(labelText: label),
+      obscureText: obscureText,
+    );
+  }
+}
+
+class LoginHeader extends StatelessWidget {
+  const LoginHeader({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -116,24 +205,48 @@ final TextEditingController passwordController = TextEditingController();
       ],
     );
   }
+}
 
-  Widget _buildTextField({
-    required TextEditingController controller,
-    required String label,
-    bool obscureText = false,
-  }) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(labelText: label),
-      obscureText: obscureText,
+class SocialButtons extends StatelessWidget {
+  const SocialButtons({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SocialButton(assetPath: "assets/images/facebook.png", onPressed: () {
+          // Provider.of<LocaleProvider>(context,listen: false).changeLocale(const Locale("es"));
+
+          // Handle Facebook login action
+        }),
+        const SizedBox(width: 10),
+        SocialButton(assetPath: "assets/images/google.png", onPressed: () {
+          // Handle Google login action
+          context.read<LocaleBloc>().add(
+            const LocaleEvent.changeLocale(Locale('en')),  // Change to French
+          );
+          // context.read<LocaleProvider>().changeLocale(const Locale("en"));
+        }),
+      ],
     );
   }
+}
 
-  Widget _buildLoginButton({
-    required BuildContext context,
-    required TextEditingController usernameController,
-    required TextEditingController passwordController,
-  }) {
+class LoginButton extends StatelessWidget {
+  const LoginButton({
+    super.key,
+    required this.context,
+    required this. usernameController,
+    required this. passwordController
+  });
+  final BuildContext context ;
+  final TextEditingController usernameController;
+  final TextEditingController passwordController;
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: 200,
       height: 50,
@@ -164,31 +277,16 @@ final TextEditingController passwordController = TextEditingController();
       ),
     );
   }
+}
 
-  Widget _buildSocialButtons(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _buildSocialButton("assets/images/facebook.png", onPressed: () {
-          // Provider.of<LocaleProvider>(context,listen: false).changeLocale(const Locale("es"));
-          context.read<LocaleBloc>().add(
-            const LocaleEvent.changeLocale(Locale('es')),  // Change to Spanish (es)
-          );
-          // Handle Facebook login action
-        }),
-        const SizedBox(width: 10),
-        _buildSocialButton("assets/images/google.png", onPressed: () {
-          // Handle Google login action
-          context.read<LocaleBloc>().add(
-            const LocaleEvent.changeLocale(Locale('en')),  // Change to French
-          );
-          // context.read<LocaleProvider>().changeLocale(const Locale("en"));
-        }),
-      ],
-    );
-  }
-
-  Widget _buildSocialButton(String assetPath, {required VoidCallback onPressed}) {
+class SocialButton extends StatelessWidget {
+  const SocialButton({
+    super.key,required this.assetPath,required this.onPressed
+  });
+ final String assetPath;
+ final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
@@ -201,21 +299,5 @@ final TextEditingController passwordController = TextEditingController();
         height: 30,
       ),
     );
-  }
-
-  Widget _buildSignupOption(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        context.router.push(const HomeRoute());
-      },
-      borderRadius: BorderRadius.circular(30),
-      child: Text(context.loc.signup),
-    );
-  }
-  @override
-  void dispose() {
-    usernameController.dispose();
-    passwordController.dispose();
-    super.dispose();
   }
 }
