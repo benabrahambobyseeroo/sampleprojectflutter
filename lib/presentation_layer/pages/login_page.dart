@@ -57,7 +57,7 @@ final TextEditingController passwordController = TextEditingController();
 
 
                       const SizedBox(height: 50),
-                      Align(alignment: Alignment.centerLeft,
+                      const Align(alignment: Alignment.centerLeft,
                           child: LoginHeader()),
                       const SizedBox(height: 25),
                       BuildTextField(
@@ -89,7 +89,7 @@ final TextEditingController passwordController = TextEditingController();
               ),
             ),
             const SizedBox(height: 20),
-            SocialButtons(),
+            const SocialButtons(),
             const SizedBox(height: 20),
         InkWell(
           onTap: () {
@@ -113,7 +113,7 @@ final TextEditingController passwordController = TextEditingController();
                         const LocaleEvent.changeLocale(Locale('es')),  // Change to French
                       );
                       // context.read<LocaleProvider>().changeLocale(const Locale("en"));
-                    }, child: Text("Es")),
+                    }, child: const Text("Es")),
                 FilledButton(style: FilledButton.styleFrom(
                   fixedSize: const Size(200, 50),
                   backgroundColor: Theme.of(context).hintColor,
@@ -124,7 +124,7 @@ final TextEditingController passwordController = TextEditingController();
                     const LocaleEvent.changeLocale(Locale('en')),  // Change to French
                   );
                   // context.read<LocaleProvider>().changeLocale(const Locale("en"));
-                }, child: Text("En"))
+                }, child: const Text("En"))
 
               ],
             ),
