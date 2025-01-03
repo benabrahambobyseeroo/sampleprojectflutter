@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
-import 'package:sampleproject/presentation_layer/pages/main_page.dart';
 import 'package:sampleproject/presentation_layer/widgets/action_button.dart';
 import 'package:sampleproject/presentation_layer/widgets/custom_bottom_navigation_bar.dart';
 import 'package:sampleproject/presentation_layer/widgets/makanek_logo.dart';

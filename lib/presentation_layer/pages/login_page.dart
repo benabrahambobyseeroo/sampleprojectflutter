@@ -7,7 +7,6 @@ import 'package:sampleproject/config/routes/router.gr.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
 import 'package:sampleproject/presentation_layer/bloc/locale_bloc/locale_bloc.dart';
 import 'package:sampleproject/presentation_layer/bloc/login_bloc/login_bloc.dart';
-import 'package:sampleproject/presentation_layer/pages/login_page.dart';
 import 'package:sampleproject/presentation_layer/widgets/build_textfield.dart';
 import 'package:sampleproject/presentation_layer/widgets/login_button.dart';
 import 'package:sampleproject/presentation_layer/widgets/login_header.dart';

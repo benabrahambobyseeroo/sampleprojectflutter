@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sampleproject/presentation_layer/bloc/locale_bloc/locale_bloc.dart';
-import 'package:sampleproject/presentation_layer/pages/login_page.dart';
 import 'package:sampleproject/presentation_layer/widgets/social_button.dart';
 
 class SocialButtons extends StatelessWidget {

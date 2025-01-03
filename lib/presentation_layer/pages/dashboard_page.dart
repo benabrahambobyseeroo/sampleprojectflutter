@@ -1,7 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sampleproject/presentation_layer/pages/dashboard_page.dart';
 import 'package:sampleproject/presentation_layer/widgets/user_catagory_button.dart';
 
 @RoutePage()
