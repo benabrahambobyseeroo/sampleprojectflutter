@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sampleproject/config/routes/router.dart';
-import 'package:sampleproject/presentation_layer/bloc/login_bloc.dart';
+import 'package:sampleproject/presentation_layer/bloc/api_bloc/login_bloc.dart';
+import 'package:sampleproject/presentation_layer/bloc/localalization_bloc/locale_bloc.dart';
+// import 'package:sampleproject/presentation_layer/bloc/login_bloc.dart';
 import 'package:sampleproject/config/di/injectable.dart';
 import 'package:sampleproject/l10n/app_localizations.dart';
-import 'package:sampleproject/presentation_layer/provider/locale_bloc.dart';
+// import 'p
 
 
 void main() {
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       builder: (context, state) {
         return MaterialApp.router(
           title: 'Flutter Sample UI',
-          locale: state?.when(
+          locale: state.when(
             initial: () => const Locale('en'),  // Default to English if initial
             loaded: (locale) => locale,         // Use loaded locale
           ),

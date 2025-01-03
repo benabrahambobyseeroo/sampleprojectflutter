@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sampleproject/presentation_layer/provider/locale_bloc.dart';
+// import 'package:sampleproject/presentation_layer/provider/locale_bloc.dart';
 
 import 'dart:ui';
 import 'package:bloc/bloc.dart';
