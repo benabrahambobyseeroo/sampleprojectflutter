@@ -7,7 +7,12 @@ import 'package:sampleproject/config/routes/router.gr.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
 import 'package:sampleproject/presentation_layer/bloc/locale_bloc/locale_bloc.dart';
 import 'package:sampleproject/presentation_layer/bloc/login_bloc/login_bloc.dart';
+import 'package:sampleproject/presentation_layer/pages/login_page.dart';
+import 'package:sampleproject/presentation_layer/widgets/build_textfield.dart';
+import 'package:sampleproject/presentation_layer/widgets/login_button.dart';
+import 'package:sampleproject/presentation_layer/widgets/login_header.dart';
 import 'package:sampleproject/presentation_layer/widgets/makanek_logo.dart';
+import 'package:sampleproject/presentation_layer/widgets/social_buttons.dart';
 
 
 @RoutePage()
@@ -162,142 +167,12 @@ final TextEditingController passwordController = TextEditingController();
   }
 }
 
-class BuildTextField extends StatelessWidget {
-  const BuildTextField({
-    super.key, required this. controller,
-    required this. label,
-    bool obscureText = false,
-  });
-  final TextEditingController controller;
-  final  String label;
-  final bool obscureText = false;
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(labelText: label),
-      obscureText: obscureText,
-    );
-  }
-}
 
-class LoginHeader extends StatelessWidget {
-  const LoginHeader({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          context.loc.login,
-          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 5),
-        Image.asset(
-          "assets/images/bar.png",
-          width: 50,
-          height: 10,
-          fit: BoxFit.fill,
-        ),
-      ],
-    );
-  }
-}
 
-class SocialButtons extends StatelessWidget {
-  const SocialButtons({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SocialButton(assetPath: "assets/images/facebook.png", onPressed: () {
-          // Provider.of<LocaleProvider>(context,listen: false).changeLocale(const Locale("es"));
 
-          // Handle Facebook login action
-        }),
-        const SizedBox(width: 10),
-        SocialButton(assetPath: "assets/images/google.png", onPressed: () {
-          // Handle Google login action
-          context.read<LocaleBloc>().add(
-            const LocaleEvent.changeLocale(Locale('en')),  // Change to French
-          );
-          // context.read<LocaleProvider>().changeLocale(const Locale("en"));
-        }),
-      ],
-    );
-  }
-}
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({
-    super.key,
-    required this.context,
-    required this. usernameController,
-    required this. passwordController
-  });
-  final BuildContext context ;
-  final TextEditingController usernameController;
-  final TextEditingController passwordController;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 200,
-      height: 50,
-      child: ElevatedButton(
-        onPressed: () {
-          final username = usernameController.text.trim();
-          final password = passwordController.text.trim();
 
-          if (username.isNotEmpty && password.isNotEmpty) {
-            context.read<LoginBloc>().add(
-              LoginEvent.started(
-                number: username,
-                pass: password,
-              ),
-            );
-          } else {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Please enter username and password')),
-            );
-          }
-        },
-        style: ElevatedButton.styleFrom(
-          fixedSize: const Size(200, 50),
-          backgroundColor: Theme.of(context).hintColor,
-          foregroundColor: Colors.black,
-        ),
-        child: const Text('Login'),
-      ),
-    );
-  }
-}
 
-class SocialButton extends StatelessWidget {
-  const SocialButton({
-    super.key,required this.assetPath,required this.onPressed
-  });
- final String assetPath;
- final VoidCallback onPressed;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: const CircleBorder(),
-        padding: const EdgeInsets.all(8),
-      ),
-      onPressed: onPressed,
-      child: Image.asset(
-        assetPath,
-        width: 30,
-        height: 30,
-      ),
-    );
-  }
-}
+

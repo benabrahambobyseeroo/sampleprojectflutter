@@ -1,7 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
+import 'package:sampleproject/presentation_layer/pages/main_page.dart';
+import 'package:sampleproject/presentation_layer/widgets/action_button.dart';
+import 'package:sampleproject/presentation_layer/widgets/custom_bottom_navigation_bar.dart';
 import 'package:sampleproject/presentation_layer/widgets/makanek_logo.dart';
+import 'package:sampleproject/presentation_layer/widgets/status_badge.dart';
 
 @RoutePage()
 class TryScreen extends StatelessWidget {
@@ -134,104 +138,7 @@ class TryScreen extends StatelessWidget {
   }
 }
 
-class ActionButton extends StatelessWidget {
-  final String iconPath;
-  final String label;
 
-  const ActionButton({required this.iconPath, required this.label, super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: Theme.of(context).primaryColor, width: 2),
-          ),
-          child: Image.asset(
-            iconPath,
-            height: 40,
-            width: 40,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
-      ],
-    );
-  }
-}
 
-class StatusBadge extends StatelessWidget {
-  final String label;
 
-  const StatusBadge({required this.label, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-}
-
-class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-        color: Theme.of(context).hintColor,
-        border: Border(
-          top: BorderSide(color: Colors.grey.shade300),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.home, color: Colors.grey),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.notifications, color: Colors.grey),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.message, color: Colors.grey),
-            onPressed: () {},
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            child: Text(
-              context.loc.menu,
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
