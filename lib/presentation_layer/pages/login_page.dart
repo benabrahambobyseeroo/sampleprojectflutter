@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sampleproject/config/routes/router.gr.dart';
 import 'package:sampleproject/l10n/lang_extensions.dart';
-import 'package:sampleproject/presentation_layer/bloc/api_bloc/login_bloc.dart';
-import 'package:sampleproject/presentation_layer/bloc/localalization_bloc/locale_bloc.dart';
+import 'package:sampleproject/presentation_layer/bloc/locale_bloc/locale_bloc.dart';
+import 'package:sampleproject/presentation_layer/bloc/login_bloc/login_bloc.dart';
 import 'package:sampleproject/presentation_layer/widgets/makanek_logo.dart';
 
 
@@ -44,7 +44,7 @@ final TextEditingController passwordController = TextEditingController();
           children: [
             Expanded(
               flex: 1,
-              child: curvedColumn(),
+              child: CurvedColumn(),
             ),
             Expanded(
               flex: 2,
@@ -96,31 +96,7 @@ final TextEditingController passwordController = TextEditingController();
     );
   }
 
-  Widget _buildLogoSection() {
 
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            "assets/images/logo.png",
-            height: 50,
-          ),
-          const SizedBox(height: 10),
-          InkWell(
-            onDoubleTap:(){
-
-
-            },
-            child: const Text(
-              "MAKANEK",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _buildLoginHeader(BuildContext context) {
     return Column(
@@ -196,7 +172,7 @@ final TextEditingController passwordController = TextEditingController();
         _buildSocialButton("assets/images/facebook.png", onPressed: () {
           // Provider.of<LocaleProvider>(context,listen: false).changeLocale(const Locale("es"));
           context.read<LocaleBloc>().add(
-            const LocaleEvent.changeLocale(Locale('es')),  // Change to French
+            const LocaleEvent.changeLocale(Locale('es')),  // Change to Spanish (es)
           );
           // Handle Facebook login action
         }),

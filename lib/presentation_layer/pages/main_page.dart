@@ -18,15 +18,15 @@ class TryScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Top Section
-         Expanded(flex:1,child: curvedColumn()),
+          Expanded(flex: 1, child: CurvedColumn()),
           const SizedBox(height: 20),
 
           // Circular Action Buttons
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30), // Curve bottom left
                       topRight: Radius.circular(30), // Curve bottom right
                     )
@@ -89,6 +89,7 @@ class TryScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Card(
+              color: Theme.of(context).hintColor,
               elevation: 2,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
