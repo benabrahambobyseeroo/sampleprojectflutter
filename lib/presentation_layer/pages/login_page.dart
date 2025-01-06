@@ -34,7 +34,12 @@ final TextEditingController passwordController = TextEditingController();
           loading: (response) {
             // log("response"+response);
             // Future.delayed(const Duration(seconds: 2),(){
+            if(response !="No token found")
               context.router.push(TryRoute(response: response,));
+            else
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Something unexpected happened')),
+              );
             // });
 
           },
@@ -106,29 +111,37 @@ final TextEditingController passwordController = TextEditingController();
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FilledButton(
-                    style: FilledButton.styleFrom(
-                      fixedSize: const Size(200, 50),
-                      backgroundColor: Theme.of(context).hintColor,
-                      foregroundColor: Colors.black,
-                    ),
-                    onPressed: (){
-                      // Handle Google login action
+                  style: FilledButton.styleFrom(
+                    fixedSize: const Size(200, 50),
+                    backgroundColor: Theme.of(context).hintColor,
+                    foregroundColor: Colors.black,
+                  ),
+                  onPressed: () {
+                    // Get the current locale
+                    final currentLocale = Localizations.localeOf(context);
+
+                    // Toggle between Spanish and English
+                    if (currentLocale.languageCode == 'es') {
+                      // Change to English
                       context.read<LocaleBloc>().add(
-                        const LocaleEvent.changeLocale(Locale('es')),  // Change to French
+                        const LocaleEvent.changeLocale(Locale('en')),
                       );
-                      // context.read<LocaleProvider>().changeLocale(const Locale("en"));
-                    }, child: const Text("Es")),
-                FilledButton(style: FilledButton.styleFrom(
-                  fixedSize: const Size(200, 50),
-                  backgroundColor: Theme.of(context).hintColor,
-                  foregroundColor: Colors.black,
-                ),onPressed: (){
-                  // Handle Google login action
-                  context.read<LocaleBloc>().add(
-                    const LocaleEvent.changeLocale(Locale('en')),  // Change to French
-                  );
-                  // context.read<LocaleProvider>().changeLocale(const Locale("en"));
-                }, child: const Text("En"))
+                    } else {
+                      // Change to Spanish
+                      context.read<LocaleBloc>().add(
+                        const LocaleEvent.changeLocale(Locale('es')),
+                      );
+                    }
+                  },
+                  child: Builder(
+                    builder: (context) {
+                      // Display the current language
+                      final currentLocale = Localizations.localeOf(context);
+                      return Text(currentLocale.languageCode == 'es' ? 'Es' : 'En');
+                    },
+                  ),
+                )
+
 
               ],
             ),

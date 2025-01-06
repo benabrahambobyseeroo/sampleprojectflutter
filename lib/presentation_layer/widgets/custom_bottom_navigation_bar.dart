@@ -19,15 +19,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: const Icon(Icons.home, color: Colors.grey),
+            icon: const Icon(Icons.home, color: Colors.white),
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.notifications, color: Colors.grey),
+            icon: const Icon(Icons.notifications, color: Colors.white),
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.message, color: Colors.grey),
+            icon: const Icon(Icons.message, color: Colors.white),
             onPressed: () {},
           ),
           ElevatedButton(

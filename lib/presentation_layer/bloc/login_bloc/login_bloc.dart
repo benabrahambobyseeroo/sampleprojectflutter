@@ -13,18 +13,18 @@ part 'login_state.dart';
 
 @Injectable()
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final SignInUseCase signinusecase;
-  LoginBloc(this.signinusecase) : super(const LoginState.initial()) {
+  final SignInUseCase signInUseCase;
+  LoginBloc(this.signInUseCase) : super(const LoginState.initial()) {
     on<LoginEvent>((event, emit) async {
       await event.when(started: (number,pass) async {
         // emit(const LoginState.success());
         try {
-          final response = await signinusecase.call(phoneNumber: number,password: pass);
-          // log("response"+response);
+          final response = await signInUseCase.call(phoneNumber: number,password: pass);
+
           emit( LoginState.loading(response));
 
         } catch (e) {
-          log("ERROR");
+          emit( LoginState.loading(""));
         }
       });
     });
