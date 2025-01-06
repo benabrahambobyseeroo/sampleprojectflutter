@@ -22,7 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           emit( LoginState.loading(response));
 
         } catch (e) {
-          emit( LoginState.loading(""));
+          emit( const LoginState.loading(""));
         }
       });
     });

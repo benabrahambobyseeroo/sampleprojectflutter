@@ -34,12 +34,15 @@ final TextEditingController passwordController = TextEditingController();
           loading: (response) {
             // log("response"+response);
             // Future.delayed(const Duration(seconds: 2),(){
-            if(response !="No token found")
-              context.router.push(TryRoute(response: response,));
+            if(response !="No token found") {
+              context.router.push(TryRoute(response: response));
+            }
             else
+            {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Something unexpected happened')),
               );
+            }
             // });
 
           },
